@@ -29,16 +29,6 @@
 
 <!-- Firebase config -->
 <script>
-    // const firebaseConfig = {
-    //     apiKey: "AIzaSyDtjoHKlR2Z-vmTo02Sdnp3W4A3OZDY7sc",
-    //     authDomain: "dhaka-metro-rail-b65f1.firebaseapp.com",
-    //     databaseURL: "https://dhaka-metro-rail-b65f1-default-rtdb.firebaseio.com",
-    //     projectId: "dhaka-metro-rail-b65f1",
-    //     storageBucket: "dhaka-metro-rail-b65f1.appspot.com",
-    //     messagingSenderId: "907606191260",
-    //     appId: "1:907606191260:web:8d8e22a74c1370f1c19159"
-    // };
-
     const firebaseConfig = {
         apiKey: "AIzaSyClPvEEnB0DMJpDFD9DLx6jgJfym4SYe98",
         authDomain: "moner-kotha-168ac.firebaseapp.com",
@@ -83,17 +73,21 @@
                                     var com = document.getElementById('comment').value;
                                     const d = new Date;
                                     var dt = d.toString();
+                                    var dvinfo;
                                     if (/Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                                         // some code..
                                         {
-                                            alert('android');
+                                            dvinfo = "android";
                                         }
                                     }
                                     else if(/iPhone|iPad|iPod/i.test(navigator.userAgent))
                                     {
-                                        alert('iphone');
+                                        dvinfo = 'ios';
                                     }
-                                    else alert('pc');
+                                    else
+                                    {
+                                        dvinfo = 'pc';
+                                    }
 
                                     if (com == "") {
                                         alert("Please Say Something :)");
@@ -104,12 +98,13 @@
 
                                         firebase.database().ref('comments/' + dt).set({
                                             comment: com,
-                                            dateTime: dt
+                                            dateTime: dt,
+                                            dvinfo: dvinfo
                                         }, function (error) {
                                             if (error) {
                                                 // The write failed...
                                             } else {
-                                                alert("Response Submitted");
+                                                alert("Thanks for your response <3");
                                                 location.replace("index.html");
                                             }
                                         });
