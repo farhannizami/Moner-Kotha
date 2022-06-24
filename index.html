@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মনের কথা</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,700&family=Rubik+Moonrocks&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Firebase link -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+</head>
+
+<!-- Firebase config -->
+<script>
+    // const firebaseConfig = {
+    //     apiKey: "AIzaSyDtjoHKlR2Z-vmTo02Sdnp3W4A3OZDY7sc",
+    //     authDomain: "dhaka-metro-rail-b65f1.firebaseapp.com",
+    //     databaseURL: "https://dhaka-metro-rail-b65f1-default-rtdb.firebaseio.com",
+    //     projectId: "dhaka-metro-rail-b65f1",
+    //     storageBucket: "dhaka-metro-rail-b65f1.appspot.com",
+    //     messagingSenderId: "907606191260",
+    //     appId: "1:907606191260:web:8d8e22a74c1370f1c19159"
+    // };
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyClPvEEnB0DMJpDFD9DLx6jgJfym4SYe98",
+        authDomain: "moner-kotha-168ac.firebaseapp.com",
+        databaseURL: "https://moner-kotha-168ac-default-rtdb.firebaseio.com",
+        projectId: "moner-kotha-168ac",
+        storageBucket: "moner-kotha-168ac.appspot.com",
+        messagingSenderId: "366976805004",
+        appId: "1:366976805004:web:b33d5127491130197f73a9"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+</script>
+
+
+<body>
+
+    <main>
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
+                <div class="col-lg-8 d-flex justify-content-center">
+                    <div class="commentbox">
+                        <div class="title d-flex justify-content-center">
+                            Say Something
+                        </div>
+                        <div class="mb-5 mt-5">
+                            <label for="exampleFormControlTextarea1" class="form-label txtlbl">Leave a message for
+                                Farhan Nasif Nizami</label>
+                            <textarea class="form-control" id="comment" rows="10"></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary submitbtn" onclick="submission()">Submit <i
+                                    class="bi bi-send"></i></button>
+
+
+
+                            <!-- firebase input script -->
+                            <script>
+                                function submission() {
+                                    var com = document.getElementById('comment').value;
+                                    const d = new Date;
+                                    var dt = d.toString();
+                                    if (/Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                                        // some code..
+                                        {
+                                            alert('android');
+                                        }
+                                    }
+                                    else if(/iPhone|iPad|iPod/i.test(navigator.userAgent))
+                                    {
+                                        alert('iphone');
+                                    }
+                                    else alert('pc');
+
+                                    if (com == "") {
+                                        alert("Please Say Something :)");
+                                    }
+                                    else {
+
+
+
+                                        firebase.database().ref('comments/' + dt).set({
+                                            comment: com,
+                                            dateTime: dt
+                                        }, function (error) {
+                                            if (error) {
+                                                // The write failed...
+                                            } else {
+                                                alert("Response Submitted");
+                                                location.replace("index.html");
+                                            }
+                                        });
+                                    }
+                                }
+                            </script>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

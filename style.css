@@ -1,0 +1,58 @@
+body
+{
+    background: #5AB4E0 !important;
+    overflow-x: hidden;
+}
+
+.commentbox
+{
+    background: #275474;
+    /*margin: 50px 100px 50px 100px;*/
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 600px;
+    width: 100%;
+    color: white;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.commentbox .title
+{
+    font-family: 'Rubik Moonrocks', cursive;
+    font-size: 50px;
+}
+
+.commentbox .txtlbl
+{
+    font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Rubik Moonrocks', cursive; */
+}
+
+@media (max-width:500px){
+    .commentbox .title
+    {
+        font-size: 40px;
+    }
+}
+@media (max-width:400px){
+    .commentbox .title
+    {
+        font-size: 34px;
+    }
+}
+
+.submitbtn
+{
+    width: 150px;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    background: white !important;
+    color: black !important;
+}
+.submitbtn:hover
+{
+    border-radius: 30px !important;
+    background: rgb(204, 201, 201) !important;
+    font-weight: 600 !important;
+}
